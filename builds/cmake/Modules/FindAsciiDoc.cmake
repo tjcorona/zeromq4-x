@@ -6,19 +6,21 @@
 # A2X_EXECUTABLE - the full path to a2x
 # A2X_FOUND - If false, don't attempt to use a2x.
 
+set(programfiles_x86_path "PROGRAMFILES(X86)")
 find_program(ASCIIDOC_EXECUTABLE asciidoc asciidoc.py
              PATHS "$ENV{ASCIIDOC_ROOT}"
                    "$ENV{PROGRAMW6432}/asciidoc"
                    "$ENV{PROGRAMFILES}/asciidoc"
-                   "$ENV{PROGRAMFILES(X86)}/asciidoc")
+                   "$ENV{${programfiles_x86_path}}/asciidoc")
 
 find_program(A2X_EXECUTABLE a2x
-             PATHS "$ENV{ASCIIDOC_ROOT}"
+             PATHS $ENV{ASCIIDOC_ROOT}
                    "$ENV{PROGRAMW6432}/asciidoc"
                    "$ENV{PROGRAMFILES}/asciidoc"
-                   "$ENV{PROGRAMFILES(X86)}/asciidoc")
+                   "$ENV{${programfiles_x86_path}}/asciidoc")
 
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_ARGS(AsciiDoc REQUIRED_VARS ASCIIDOC_EXECUTABLE)
 mark_as_advanced(ASCIIDOC_EXECUTABLE A2X_EXECUTABLE)
+unset(programfiles_x86_path)
