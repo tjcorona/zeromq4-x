@@ -662,6 +662,12 @@ else()
           LIBRARY DESTINATION lib
           FRAMEWORK DESTINATION "Library/Frameworks"
           PUBLIC_HEADER DESTINATION include)
+
+  # On Mac OS X, set the directory included as part of the
+  # installed library's path. We only do this to libraries that we plan
+  # on installing
+  set_target_properties(libzmq PROPERTIES
+                          INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib")
 endif()
 
 # install(FILES ${public_headers}
