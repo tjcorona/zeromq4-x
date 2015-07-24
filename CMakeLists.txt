@@ -266,7 +266,7 @@ set(LIBRARY_OUTPUT_PATH  ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 if(MSVC OR MINGW)
   # NB: May require tweaking for highly connected applications.
-  add_definitions(-DFD_SETSIZE=1024) 
+  add_definitions(-DFD_SETSIZE=1024)
 endif()
 
 if(MSVC)
@@ -651,7 +651,7 @@ if(MSVC)
           PUBLIC_HEADER DESTINATION include
           COMPONENT SDK)
 
-    install(TARGETS libzmq libzmq-static
+    install(TARGETS libzmq
             RUNTIME DESTINATION bin
             PUBLIC_HEADER DESTINATION include
             COMPONENT Runtime)
